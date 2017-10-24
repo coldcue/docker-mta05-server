@@ -10,5 +10,5 @@ docker run -itd \
   -e RANDOM_WEATHER=1 \
   -e SERVER_PASSWORD_ENABLED=0 \
   -e SERVER_PASSWORD=changeme \
-  -e ADMIN_PASSWOD=changeme \
-  mta05
+  -e ADMIN_PASSWORD=reallychangeme \
+  andrasszell/mta05-server

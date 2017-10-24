@@ -12,7 +12,7 @@ RUN tar -xvzf mta05r2_server_linux.tar.gz \
     && chmod 755 MTAServer0.5 \
     && chmod 755 start.sh
 
-EXPOSE 2003
-EXPOSE 4003
+EXPOSE 2003/UDP
+EXPOSE 4003/UDP
 
 CMD ["bash", "./start.sh"]

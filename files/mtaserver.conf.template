@@ -170,7 +170,7 @@ ServerPassword {{serverPassword}}
 # Notes:
 #	0 - disabled
 #	1 - enabled
-AdminServer 0
+AdminServer 1
 
 # AdminPlus
 # Required: No
@@ -196,7 +196,7 @@ AdminPort 4003
 # Purpose: Defines the password that will be required for the MTA Remote Admin to connect to your server.
 # Notes:
 #	Passwords are NOT sent encrypted in this version of the client / server.  Please keep that in mind.
-AdminPassword ""
+AdminPassword {{adminPassword}}
 
 # AdminPlusPassword
 # Required: Yes (if AdminPlus == 1).

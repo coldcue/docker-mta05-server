@@ -12,6 +12,4 @@ sed -i 's/{{serverPasswordEnabled}}/'"${SERVER_PASSWORD_ENABLED}"'/g' mtaserver.
 sed -i 's/{{serverPassword}}/\"'"${SERVER_PASSWORD}"'\"/g' mtaserver.conf
 sed -i 's/{{adminPassword}}/\"'"${ADMIN_PASSWORD}"'\"/g' mtaserver.conf
 
-cat mtaserver.conf
-
 ./MTAServer0.5
