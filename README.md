@@ -3,6 +3,8 @@
 ### How to start
 docker run -itd \
   --name mta05 \
+  -p 2003:2003/udp \
+  -p 4003:4003/udp \
   -e SERVER_NAME="MTA 0.5 Server in Docker" \
   -e MAX_PLAYERS=26 \
   -e GAME_MAP=1 \
