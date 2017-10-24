@@ -1,0 +1,282 @@
+# ServerName
+# Required: Yes.
+# Requirements: Must have a length of at least 3 characters.
+# Purpose: Defines the name of the server in the server browser.
+# Notes:
+#	None
+ServerName {{serverName}}
+
+# GameIPAddress
+# Required: No.  Will be set to default if not specified.
+# Requirements: Must be in IP address form.
+# Purpose: Defines which IP address the game server will listen on.
+# Notes:
+#	Comment this line out for the default setting to apply.
+#GameIPAddress "192.168.2.2"
+
+# AdminIPAddress
+# Required: No.  Will set to default if not specified.
+# Requirements: Must be in IP address form.
+# Purpose: Defines which IP address the admin server will listen on.
+# Notes:
+#	Comment this line out for the default setting to apply.
+#AdminIPAddress "192.168.2.2"
+
+# ServerPort
+# Required: Yes.
+# Requirements: Must be greater than 0.
+# Purpose: Defines the port on which the server will listen for incoming connections.
+# Notes:
+#	This port must not be used by any other process and must be opened for UDP traffic on
+#	your firewall and/or router.
+ServerPort 2003
+
+# MaxPlayers
+# Required: Yes.
+# Requirements: Must be between 1 and 32 for GTA3:MTA or 1 and 26 for MTA:VC.
+# Purpose: Defines the maximum amount of players allowed to connect to the server and play in the game.
+# Notes:
+#	Although we are using updated netcode, the server is designed to to scale depending on
+#	the amount of clients that are connected.
+#	This means that the fewer clients that are connected to your Server, the less bandwidth
+#	your server will use and vice versa.
+#	We advise starting off at a lower number, such as 8 or 16 (or even lower), and monitoring
+#	your bandwidth to determine whether it is within an
+#	acceptable range and then adjust accordingly.  We DO NOT accept bills for going over
+#	your monthly bandwidth usage :P
+#
+#	Due to restrictions in MTA:VC's SCM, the player cap is set to 26. No plans to
+#	increase this as I don't know how or have access to the required sources! (Towncivilian)
+MaxPlayers {{maxPlayers}}
+
+# GameMap
+# Required: Yes.
+# Requirements: Must be set to one of the options specified below.
+# Purpose: Defines the map that the server will be running.
+# Notes:
+#	1 - Vice City: Deathmatch
+#	2 - Vice City: Stunt
+#	3 - Grand Theft Auto 3: Portland
+#	4 - Grand Theft Auto 3: Shoreside Vale
+#	5 - Grand Theft Auto 3: Staunton Island
+GameMap {{gameMap}}
+
+# GameHour
+# Required: Yes
+# Requirements: Must be between 0 and 23.
+# Purpose: Defines the hour the in-game clock will start on.
+# Notes:
+#	00, 01 etc. are not required. (what the hell does this mean? - Towncivilian)
+GameHour {{gameHour}}
+
+# GameMins
+# Required: Yes
+# Requirements: Must be set between 0 and 59.
+# Purpose: Defines the minutes the in-game clock will start on.
+# Notes:
+#	00, 01 etc. are not required. (what the hell does this mean? - Towncivilian)
+GameMins 30
+
+# RandomWeather
+# Required: No.
+# Requirements: No explicit requirements, but for GTA3: Shoreside Vale, I STRONGLY suggest you set this to "0" to
+#		reduce the occurence of the color bug! It seems that weather is not properly synced in
+#		GTA3:MTA, anyway! - Towncivilian
+# Purpose: Defines whether or not weather will be random.
+# Notes:
+#	0 - disabled
+#	1 - enabled
+RandomWeather {{randomWeather}}
+
+# MOTDURL
+# Required: No.
+# Requirements: Must include the initial http:// prefix and must be an "rtf" filetype.
+# Purpose: Defines where the client will download the client (rich text) MOTD from
+# Notes:
+#	There is no toggle for this setting; if there is a valid URL here, the feature is always
+#	enabled.
+#MOTDURL ""
+
+# ASE
+# Required: No.
+# Requirements: None.
+# Purpose: Defines whether or not the server should attempt to register with Game-Monitor.
+# 	Note that MTAServer requires this to be defined as "ASE" so don't change that!
+# Notes:
+#	Game-Monitor will attempt to connect and issue commands through the defined ServerPort + 123 (or, if unavailable, +124, +125, etc...)
+#	0 - disabled
+#	1 - enabled
+ASE 0
+
+# LogFile
+# Required: No.
+# Requirements: None.
+# Purpose: Forces the server to log certain activities to the file / path specified.
+# Notes:
+#	If you do not wish to enable logging within the Server, comment out the following line.
+LogFile "mtaserver.log"
+
+# BannedFile
+# Required: Yes.
+# Requirements: None.
+# Purpose: Forces the server to store its bans to the file / path specified.
+# Notes: None.
+BannedFile "banned.lst"
+
+# DoNotOutputChatToLog
+# Required: No (this value is 0 if not specified).
+# Requirements: None.
+# Purpose: Defines whether or not the Server should display/log chat text.
+# Notes:
+#	0 - disabled, display/log the chat text
+#	1 - enabled, do not display/log the chat text
+DoNotOutputChatToLog 0
+
+# StatLogging
+# Required: No (0 is disabled)
+# Purpose: Enables the statistics-mode logging for use with MTA-Stats
+# Notes:
+#	If you want to generate a statistics page for your game, enable this setting and run the MTA-Stats
+#	program to create a PHP statistics page.
+#
+#	* WARNING * - There is a potential issue that enabling this may cause server
+#	instability / crashing.  Use at your own risk.
+#
+#	0 - disabled
+#	1 - enabled (statistics enabled)
+StatLogging 0
+
+# ServerPasswordEnabled
+# Required: No.
+# Requirements: None.
+# Purpose: Defines that a password is required for clients to connect to your server.
+# Notes:
+#	Passwords are NOT sent encrypted in this version of the client / server.  Please keep that in mind.
+#	0 - disabled
+#	1 - enabled
+ServerPasswordEnabled {{serverPasswordEnabled}}
+
+# ServerPassword
+# Required: Yes (if ServerPasswordEnabled == 1).
+# Requirements: Must be at least one character.
+# Purpose: Defines the password that will be required for clients to connect to your server.
+# Notes:
+#	Passwords are NOT sent encrypted in this version of the client / server.  Please keep that in mind.
+ServerPassword {{serverPassword}}
+
+# AdminServer
+# Required: No
+# Purpose: Defines whether or not the server should listen for connections from the MTA Remote Admin.
+# Notes:
+#	0 - disabled
+#	1 - enabled
+AdminServer 0
+
+# AdminPlus
+# Required: No
+# Purpose: Defines whether or not the server should accept connections from Admin+ clients
+#	   i.e. MTA Server Admin, MTA LUA Admin
+# Notes:
+#	Enabling this feature will use the bandwidth equivalent of an extra player.
+#	0 - disabled
+#	1 - enabled
+AdminPlus 1
+
+# AdminPort
+# Required: No (default port is 4003 if this is not specified).
+# Requirements: Must be greater than 0.
+# Purpose: Defines the port on which the server will listen for communication with the MTA Remote Admin tool.
+# Notes:
+#	This port must not be used by any other process and must be opened for UDP traffic on your firewall and/or router.
+AdminPort 4003
+
+# AdminPassword
+# Required: Yes (if AdminServer == 1).
+# Requirements: Must be at least one character.
+# Purpose: Defines the password that will be required for the MTA Remote Admin to connect to your server.
+# Notes:
+#	Passwords are NOT sent encrypted in this version of the client / server.  Please keep that in mind.
+AdminPassword ""
+
+# AdminPlusPassword
+# Required: Yes (if AdminPlus == 1).
+# Requirements: Must be at least one character.
+# Purpose: Defines the password that will be required by the MTA Remote Admin or MTA LUA Admin for Admin+ connections to your server.
+# Notes:
+#	Passwords are NOT sent encrypted in this version of the client / server.  Please keep that in mind.
+AdminPlusPassword {{adminPassword}}
+
+# AdminAllowShutdown
+# Required: No.
+# Requirements: None.
+# Purpose: Defines whether or not the MTA Remote Admin should have the power to shut down the server.
+# Notes:
+#	0 - disabled
+#	1 - enabled
+AdminAllowShutdown 0
+
+# ChatFloodMaxCount
+# Required: No (default count is 2 if this is not specified).
+# Requirements: Value must be at least 1 (one).
+# Purpose: Defines the maximum amount of chat lines per second to accept before action is taken against the player.
+# Notes:
+#	You will have to play around with this number to see how it works best for you.  The lower the number, the less tolerance the server will have for chat flooders.
+#    	The recommended values are 2 or 3.
+ChatFloodMaxCount 2
+
+# BanOnChatFlood
+# Required: No (default value is 0).
+# Requirements: None.
+# Purpose: Defines whether or not a player's IP should be banned if they are suspected of chat flooding.
+# Notes:
+#	Although this is a useful feature, you will have to remember that not all players
+#	suspected of chat flooding are in fact attempting to chat flood the server.
+#	By default, the server will kick those who are suspected, which in 99% of cases should be fine.
+#	Only enable this if you feel your server is under attack.
+#	0 - disabled
+#	1 - enabled
+BanOnChatFlood 0
+
+#
+# Advanced Server Settings
+#
+# Only change these if you know what you are doing and know the limits of the MTA Server
+# and your connection.
+#
+
+# ServerSendLimitEnabled
+# Required: No.
+# Requirements: None.
+# Purpose: Defines whether or not the server should limit how much data is sent. This will
+# result in packet loss if the limit is exceeded.
+# Notes:
+#	Gameplay will be sacrificed if this is enabled and packets are dropped.  It is NOT recommended that you use this.
+#	This should only be used in emergency purposes and if you enable all these advanced settings I suggest setting the values very high.
+#	0 - disabled
+#	1 - enabled
+#ServerSendLimitEnabled 1
+
+# ServerSendLimit
+# Required: Yes (if ServerSendLimitEnabled == 1).
+# Requirements: None.
+# Purpose: Defines the actual send limit, in bytes, that will be enforced.  If this limit is
+# increased, packets will be dropped.
+# Notes:
+#	This value is the total bytes per second that will be allowed.  It is reset to 0 every second and is counted on each send.
+#ServerSendLimit 200000
+
+# ServerSendLimitMaxAllowed
+# Required: Yes (if ServerSendLimitEnabled == 1).
+# Requirements: None.
+# Purpose: Defines the maximum amount of bytes to be sent per second that will be allowed before the server shuts itself down.
+# Notes: None.
+#ServerSendLimitMaxAllowed 250000
+
+# ServerSendLimitLogDropped
+# Required: No.
+# Requirements: None.
+# Purpose: Defines whether or not the dropped packet notifications should be logged.
+# Notes:
+#	0 - disabled
+#	1 - enabled
+#ServerSendLimitLogDropped 1
