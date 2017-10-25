@@ -12,7 +12,11 @@ RUN tar -xvzf mta05r2_server_linux.tar.gz \
     && chmod 755 MTAServer0.5 \
     && chmod 755 start.sh
 
+# Game port
 EXPOSE 2003/UDP
+# ASE Port
+EXPOSE 2126/UDP
+# Admin port
 EXPOSE 4003/UDP
 
 CMD ["bash", "./start.sh"]

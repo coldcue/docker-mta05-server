@@ -106,7 +106,7 @@ RandomWeather {{randomWeather}}
 #	Game-Monitor will attempt to connect and issue commands through the defined ServerPort + 123 (or, if unavailable, +124, +125, etc...)
 #	0 - disabled
 #	1 - enabled
-ASE 0
+ASE 1
 
 # LogFile
 # Required: No.
