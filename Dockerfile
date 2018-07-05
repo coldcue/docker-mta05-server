@@ -1,8 +1,9 @@
-FROM m0elnx/ubuntu-32bit:14.04.20170724
+FROM ubuntu
 
 # Install libstdc++5 dependency
-RUN apt-get update && apt-get install -y \
-    libstdc++5 \
+RUN dpkg --add-architecture i386 \
+    && apt-get update && apt-get install -y \
+    libstdc++5:i386 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /mta05
