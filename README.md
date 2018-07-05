@@ -1,7 +1,8 @@
 # Dockerized MTA 0.5 r2 Server
 
 ### How to start
-```docker run -itd \
+```
+docker run -itd \
   --name mta05 \
   -p 2003:2003/udp \
   -p 2126:2126/udp \
@@ -14,4 +15,5 @@
   -e SERVER_PASSWORD_ENABLED=0 \
   -e SERVER_PASSWORD=changeme \
   -e ADMIN_PASSWORD=reallychangeme \
-  andrasszell/mta05-server```
+  andrasszell/mta05-server
+  ```
