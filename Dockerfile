@@ -1,3 +1,17 @@
+# Build aseping
+FROM ubuntu as aseping_builder
+
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /build
+
+COPY aseping/ /build
+
+RUN gcc aseping.c -o aseping && chmod +x aseping
+
+# Actual container
 FROM ubuntu
 
 # Install libstdc++5 dependency
@@ -7,6 +21,11 @@ RUN dpkg --add-architecture i386 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /mta05
+
+# Health check using aseping
+COPY --from=aseping_builder /build/aseping /usr/bin/
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+  CMD aseping localhost 2126
 
 ADD mta05r2_server_linux.tar.gz /mta05
 
