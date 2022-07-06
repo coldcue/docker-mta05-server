@@ -1,5 +1,5 @@
 # Build aseping
-FROM ubuntu as aseping_builder
+FROM i386/ubuntu as aseping_builder
 
 RUN apt-get update && apt-get install -y \
     build-essential
@@ -11,12 +11,11 @@ COPY aseping/ /build
 RUN gcc aseping.c -o aseping && chmod +x aseping
 
 # Actual container
-FROM ubuntu
+FROM i386/ubuntu
 
 # Install libstdc++5 dependency
-RUN dpkg --add-architecture i386 \
-    && apt-get update && apt-get install -y \
-    libstdc++5:i386 \
+RUN apt-get update && apt-get install -y \
+    libstdc++5 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /mta05
